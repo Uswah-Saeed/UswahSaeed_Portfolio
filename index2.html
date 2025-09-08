@@ -1,0 +1,1041 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Uswah Saeed — Portfolio</title>
+
+  <!-- Tailwind CDN (no build step) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind custom theme adjustments -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: {
+              blue: '#3b82f6',
+              green: '#10b981',
+              orange: '#f97316',
+              red: '#ef4444'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* marquee animation for interests */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-inner {
+      display: inline-flex;
+      gap: 1.25rem;
+      animation: marquee 18s linear infinite;
+      white-space: nowrap;
+    }
+
+    /* subtle card hover */
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.45); }
+    .project-card { transition: transform .18s ease, box-shadow .18s ease; }
+
+    /* screenshot thumbnail zoom */
+    .thumb:hover { transform: scale(1.05); }
+
+    /* simple modal for media */
+    .modal-bg { background: rgba(0,0,0,0.75); }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-sm border-b border-gray-800">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <img src="https://via.placeholder.com/48" alt="profile" class="w-10 h-10 rounded-full border-2 border-gray-700">
+        <span class="font-semibold text-lg">Uswah Saeed</span>
+      </a>
+
+      <!-- desktop links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="hover:text-accent-blue">About</a>
+        <a href="#projects" class="hover:text-accent-blue">Projects</a>
+        <a href="#education" class="hover:text-accent-blue">Education</a>
+        <a href="#experience" class="hover:text-accent-blue">Experience</a>
+        <a href="#art" class="hover:text-accent-blue">Art & Design</a>
+        <a href="#tools" class="hover:text-accent-blue">Tools</a>
+        <a href="#recommendations" class="hover:text-accent-blue">Recommendations</a>
+      </div>
+
+      <!-- social + mobile btn -->
+      <div class="flex items-center gap-3">
+        <a href="https://www.linkedin.com/in/uswah-saeed/" target="_blank" class="hidden md:inline hover:text-accent-blue">LinkedIn</a>
+        <a href="https://uswahsaeed.itch.io/" target="_blank" class="hidden md:inline hover:text-accent-green">Itch.io</a>
+        <a href="https://github.com/Uswah-Saeed" target="_blank" class="hidden md:inline hover:text-gray-300">GitHub</a>
+
+        <button id="menuBtn" class="md:hidden p-2 rounded text-white focus:outline-none">☰</button>
+      </div>
+    </div>
+
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-gray-800">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="#about" class="py-2">About</a>
+        <a href="#projects" class="py-2">Projects</a>
+        <a href="#education" class="py-2">Education</a>
+        <a href="#experience" class="py-2">Experience</a>
+        <a href="#art" class="py-2">Art & Design</a>
+        <div class="flex gap-3 pt-2">
+          <a href="https://www.linkedin.com/in/uswah-saeed/" target="_blank" class="text-sm">LinkedIn</a>
+          <a href="https://uswahsaeed.itch.io/" target="_blank" class="text-sm">Itch.io</a>
+          <a href="https://github.com/Uswah-Saeed" target="_blank" class="text-sm">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="relative bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(7,11,23,0.7), rgba(7,11,23,0.7)), url('https://via.placeholder.com/1600x600');">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        <div class="flex-shrink-0">
+          <img src="https://via.placeholder.com/260" alt="Uswah" class="w-44 h-44 rounded-full border-4 border-gray-700 object-cover">
+        </div>
+
+        <div class="flex-1 text-center md:text-left">
+          <h1 class="text-4xl sm:text-5xl font-bold">Uswah Saeed</h1>
+          <p class="mt-2 text-gray-300 max-w-xl">
+            Game Developer & Designer • Interactive Media • VR & Experimental Gameplay
+          </p>
+
+          <div class="mt-5 flex flex-wrap gap-3 justify-center md:justify-start">
+            <a href="https://uswahsaeed.itch.io/" target="_blank" class="bg-accent-green px-4 py-2 rounded-md text-sm font-medium hover:opacity-90">Itch.io</a>
+            <a href="https://www.linkedin.com/in/uswah-saeed/" target="_blank" class="bg-accent-blue px-4 py-2 rounded-md text-sm font-medium hover:opacity-90">LinkedIn</a>
+            <a href="https://github.com/Uswah-Saeed" target="_blank" class="bg-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:opacity-90">GitHub</a>
+          </div>
+
+          <div class="mt-6">
+            <div class="bg-gray-800/50 rounded-full inline-flex px-4 py-1 items-center text-sm gap-3">
+              <span class="text-xs text-gray-400">Studying at</span>
+              <span class="font-medium">Aalto University (example)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- interests marquee -->
+      <div class="mt-8 overflow-hidden border-t border-gray-800 pt-4">
+        <div class="marquee-inner">
+          <span class="text-accent-blue">• Videogames</span>
+          <span class="text-accent-green">• RapidPrototyping</span>
+          <span class="text-accent-orange">• GameArt</span>
+          <span class="text-accent-red">• UX</span>
+          <span class="text-accent-blue">• GenerativeArt</span>
+          <span class="text-accent-green">• Navigation</span>
+          <span class="text-accent-orange">• GeospatialVisualization</span>
+          <span class="text-accent-red">• Design</span>
+
+          <!-- duplicate for seamless loop -->
+          <span class="text-accent-blue">• Videogames</span>
+          <span class="text-accent-green">• RapidPrototyping</span>
+          <span class="text-accent-orange">• GameArt</span>
+          <span class="text-accent-red">• UX</span>
+          <span class="text-accent-blue">• GenerativeArt</span>
+          <span class="text-accent-green">• Navigation</span>
+          <span class="text-accent-orange">• GeospatialVisualization</span>
+          <span class="text-accent-red">• Design</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+  <!-- Education Section -->
+      <section id="education" class="bg-gray-50 text-gray-900 py-16 mt-32">
+        <div class="container mx-auto px-6">
+          <!-- Section Header -->
+          <h2 class="text-3xl font-bold mb-12 flex items-center">
+            🎓 Education
+          </h2>
+
+          <!-- Timeline Wrapper -->
+          <div class="relative">
+            <!-- Center vertical line (visible on md+) -->
+            <div
+              class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-4 border-gray-300"
+            ></div>
+            <!-- Left-aligned vertical line for small screens -->
+            <div
+              class="md:hidden absolute left-8 h-full border-l-4 border-gray-300"
+            ></div>
+
+            <!-- Item 1 (Left on md, stacked on mobile) -->
+            <div
+              class="mb-16 flex flex-col md:flex-row md:justify-start w-full"
+            >
+              <div class="md:w-1/2 md:pr-8 md:text-right">
+                <img
+                  src="assets/images/aalto.png"
+                  alt="Aalto University"
+                  class="w-14 h-14 ml-auto mb-3 object-contain"
+                />
+                <h3 class="text-lg font-semibold">Aalto University</h3>
+                <p class="text-sm">MSc in CCIS – Game Design & Development</p>
+                <p class="text-xs text-gray-500">2023 – Present</p>
+              </div>
+
+              <div class="md:w-1/2 relative">
+                <!-- marker -->
+                <div
+                  class="absolute md:-left-3 left-2 top-6 w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Item 2 (Right on md, stacked on mobile) -->
+            <div class="mb-16 flex flex-col md:flex-row md:justify-end w-full">
+              <div class="md:w-1/2 relative">
+                <!-- marker -->
+                <div
+                  class="absolute md:-right-3 right-2 top-6 w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+                ></div>
+              </div>
+
+              <div class="md:w-1/2 md:pl-8">
+                <img
+                  src="assets/images/aust.png"
+                  alt="AUST"
+                  class="w-14 h-14 mb-3 object-contain"
+                />
+                <h3 class="text-lg font-semibold">AUST</h3>
+                <p class="text-sm">BSc in Computer Science & Engineering</p>
+                <p class="text-xs text-gray-500">2015 – 2019</p>
+              </div>
+            </div>
+
+            <!-- Item 3 (Left on md, stacked on mobile) -->
+            <div
+              class="mb-16 flex flex-col md:flex-row md:justify-start w-full"
+            >
+              <div class="md:w-1/2 md:pr-8 md:text-right">
+                <img
+                  src="assets/images/drmc.png"
+                  alt="Dhaka Residential"
+                  class="w-14 h-14 ml-auto mb-3 object-contain"
+                />
+                <h3 class="text-lg font-semibold">Dhaka Residential</h3>
+                <p class="text-sm">SSC & HSC</p>
+                <p class="text-xs text-gray-500">2004 – 2014</p>
+              </div>
+
+              <div class="md:w-1/2 relative">
+                <!-- marker -->
+                <div
+                  class="absolute md:-left-3 left-2 top-6 w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- Education Section -->
+    <section id="education" class="bg-gray-50 text-gray-900 py-16 mt-32">
+      <div class="container mx-auto px-6">
+        <!-- Section Header -->
+        <h2 class="text-3xl font-bold mb-12 flex items-center">🎓 Education</h2>
+
+        <!-- Horizontal Timeline -->
+        <div
+          class="relative flex items-start justify-between border-t-4 border-gray-300"
+        >
+          <!-- Aalto University (below line) -->
+          <div class="w-1/3 text-center px-4">
+            <div class="flex justify-center -mt-3">
+              <span
+                class="w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+              ></span>
+            </div>
+            <div class="mt-6">
+              <img
+                src="assets/images/aalto.png"
+                alt="Aalto University"
+                class="w-14 h-14 mx-auto mb-3 object-contain"
+              />
+              <h3 class="text-lg font-semibold">Aalto University</h3>
+              <p class="text-sm">MSc in CCIS – Game Design & Development</p>
+              <p class="text-xs text-gray-500">2023 – Present</p>
+            </div>
+          </div>
+
+          <!-- AUST (above line) -->
+          <div class="w-1/3 text-center px-4 relative">
+            <div class="flex justify-center -mt-3">
+              <span
+                class="w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+              ></span>
+            </div>
+            <div class="mb-6 absolute bottom-full left-1/2 -translate-x-1/2">
+              <img
+                src="assets/images/aust.png"
+                alt="AUST"
+                class="w-14 h-14 mx-auto mb-3 object-contain"
+              />
+              <h3 class="text-lg font-semibold">AUST</h3>
+              <p class="text-sm">BSc in Computer Science & Engineering</p>
+              <p class="text-xs text-gray-500">2015 – 2019</p>
+            </div>
+          </div>
+
+          <!-- Dhaka Residential (below line) -->
+          <div class="w-1/3 text-center px-4">
+            <div class="flex justify-center -mt-3">
+              <span
+                class="w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+              ></span>
+            </div>
+            <div class="mt-6">
+              <img
+                src="assets/images/drmc.png"
+                alt="Dhaka Residential"
+                class="w-14 h-14 mx-auto mb-3 object-contain"
+              />
+              <h3 class="text-lg font-semibold">Dhaka Residential</h3>
+              <p class="text-sm">SSC & HSC</p>
+              <p class="text-xs text-gray-500">2004 – 2014</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+  <section id="experience" class="bg-gray-50 text-gray-900 py-16 mt-32">
+      <div class="container mx-auto px-6">
+        <!-- Section Header -->
+        <h2 class="text-3xl font-bold mb-12 flex items-center">
+          💼 Work Experience
+        </h2>
+
+        <!-- Horizontal Timeline -->
+        <div
+          class="relative flex items-start justify-between border-t-4 border-gray-300"
+        >
+          <!-- Frontend Developer (below line) -->
+          <div class="w-1/4 text-center px-4">
+            <div class="flex justify-center -mt-3">
+              <span
+                class="w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+              ></span>
+            </div>
+            <div class="mt-6">
+              <img
+                src="assets/images/aalto.png"
+                alt="Nodesol Corp"
+                class="w-14 h-14 mx-auto mb-3 object-contain"
+              />
+              <h3
+                class="text-lg font-semibold flex items-center justify-center gap-1"
+              >
+                Research Assitant
+                <span class="text-xs text-gray-500"> - Jun 2024 - Present</span>
+              </h3>
+              <h3
+                class="text-lg font-semibold flex items-center justify-center gap-1"
+              >
+                Student Tutor
+                <span class="text-xs text-gray-500">
+                  - March 2024 - Dec 2024</span
+                >
+              </h3>
+
+              <p class="text-sm">Alto University</p>
+            </div>
+          </div>
+
+          <!-- Senior Game Developer (Above line) -->
+
+          <div class="w-1/4 text-center px-4 relative">
+            <div class="flex justify-center -mt-3">
+              <span
+                class="w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+              ></span>
+            </div>
+            <div class="mb-6 absolute bottom-full left-1/2 -translate-x-1/2">
+              <img
+                src="assets/images/playense.png"
+                alt="playense"
+                class="bg-black px-2 w-14 h-14 mx-auto mb-3 object-contain"
+              />
+              <h3 class="text-lg font-semibold">Senior Game Developer</h3>
+              <span class="text-xs text-gray-500">Sep 2022 - Jun 2023</span>
+              <p class="text-sm">Playence</p>
+            </div>
+          </div>
+
+          <!-- Fiver Graphic Designer (below line) -->
+          <div class="w-1/4 text-center px-4">
+            <div class="flex justify-center -mt-3">
+              <span
+                class="w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+              ></span>
+            </div>
+            <div class="mt-6">
+              <img
+                src="assets/images/fiverr.png"
+                alt="Nodesol Corp"
+                class="w-14 h-14 mx-auto mb-3 object-contain"
+              />
+              <h3 class="text-lg font-semibold">
+                Graphic Designer (Level 2) Cartoonist
+              </h3>
+              <span class="text-xs text-gray-500">April 2016 - Aug 2022</span>
+              <p class="text-sm">Fiver</p>
+            </div>
+          </div>
+
+          <!-- Aust Innovation (Above line) -->
+
+          <div class="w-1/4 text-center px-4 relative">
+            <div class="flex justify-center -mt-3">
+              <span
+                class="w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+              ></span>
+            </div>
+            <div class="mb-6 absolute bottom-full left-1/2 -translate-x-1/2">
+              <img
+                src="assets/images/aust.png"
+                alt="playense"
+                class="bg-black px-2 w-14 h-14 mx-auto mb-3 object-contain"
+              />
+              <h3 class="text-lg font-semibold">
+                Joint Secretery, Graphic Designer
+              </h3>
+              <span class="text-xs text-gray-500">Nov 2017 - Nov 2018</span>
+              <p class="text-sm">Aust Innovation and Design Club</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  <!-- -------- -->
+    <section id="experience" class="bg-gray-50 text-gray-900 py-16 mt-32">
+      <div class="container mx-auto px-6">
+        <!-- Section Header -->
+        <h2 class="text-3xl font-bold mb-12 flex items-center">
+          🏆 Awards
+        </h2>
+
+        <!-- Horizontal Timeline -->
+        <div
+          class="relative flex items-start justify-between border-t-4 border-gray-300"
+        >
+          <!-- Champion Game Developer (below line) -->
+          <div class="w-1/4 text-center px-4">
+            <div class="flex justify-center -mt-3">
+              <span
+                class="w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+              ></span>
+            </div>
+            <div class="mt-6">
+              <img
+                src="assets/images/certs/iut.jpg"
+                alt="Nodesol Corp"
+                class="w-14 h-14 mx-auto mb-3 object-contain"
+              />
+              <h3
+                class="text-lg font-semibold"
+              >
+               Champion - Game Developer
+              </h3>
+             
+
+              <p class="text-sm">IUT ICT FEST 2016</p>
+            </div>
+          </div>
+
+          <!-- Senior Game Developer (Above line) -->
+
+          <div class="w-1/4 text-center px-4 relative">
+            <div class="flex justify-center -mt-3">
+              <span
+                class="w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+              ></span>
+            </div>
+            <div class="mb-6 absolute bottom-full left-1/2 -translate-x-1/2">
+              <img
+                src="assets/images/playense.png"
+                alt="playense"
+                class="bg-black px-2 w-14 h-14 mx-auto mb-3 object-contain"
+              />
+              <h3 class="text-lg font-semibold">Senior Game Developer</h3>
+              <span class="text-xs text-gray-500">Sep 2022 - Jun 2023</span>
+              <p class="text-sm">Playence</p>
+            </div>
+          </div>
+
+          <!-- Fiver Graphic Designer (below line) -->
+          <div class="w-1/4 text-center px-4">
+            <div class="flex justify-center -mt-3">
+              <span
+                class="w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+              ></span>
+            </div>
+            <div class="mt-6">
+              <img
+                src="assets/images/fiverr.png"
+                alt="Nodesol Corp"
+                class="w-14 h-14 mx-auto mb-3 object-contain"
+              />
+              <h3 class="text-lg font-semibold">
+                Graphic Designer (Level 2) Cartoonist
+              </h3>
+              <span class="text-xs text-gray-500">April 2016 - Aug 2022</span>
+              <p class="text-sm">Fiver</p>
+            </div>
+          </div>
+
+          <!-- Aust Innovation (Above line) -->
+
+          <div class="w-1/4 text-center px-4 relative">
+            <div class="flex justify-center -mt-3">
+              <span
+                class="w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+              ></span>
+            </div>
+            <div class="mb-6 absolute bottom-full left-1/2 -translate-x-1/2">
+              <img
+                src="assets/images/aust.png"
+                alt="playense"
+                class="bg-black px-2 w-14 h-14 mx-auto mb-3 object-contain"
+              />
+              <h3 class="text-lg font-semibold">
+                Joint Secretery, Graphic Designer
+              </h3>
+              <span class="text-xs text-gray-500">Nov 2017 - Nov 2018</span>
+              <p class="text-sm">Aust Innovation and Design Club</p>
+            </div>
+          </div>
+
+
+
+          <div class="w-1/4 text-center px-4">
+            <div class="flex justify-center -mt-3">
+              <span
+                class="w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+              ></span>
+            </div>
+            <div class="mt-6">
+              <img
+                src="assets/images/fiverr.png"
+                alt="Nodesol Corp"
+                class="w-14 h-14 mx-auto mb-3 object-contain"
+              />
+              <h3 class="text-lg font-semibold">
+                Graphic Designer (Level 2) Cartoonist
+              </h3>
+              <span class="text-xs text-gray-500">April 2016 - Aug 2022</span>
+              <p class="text-sm">Fiver</p>
+            </div>
+          </div>
+
+
+          <div class="w-1/4 text-center px-4 relative">
+            <div class="flex justify-center -mt-3">
+              <span
+                class="w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"
+              ></span>
+            </div>
+            <div class="mb-6 absolute bottom-full left-1/2 -translate-x-1/2">
+              <img
+                src="assets/images/aust.png"
+                alt="playense"
+                class="bg-black px-2 w-14 h-14 mx-auto mb-3 object-contain"
+              />
+              <h3 class="text-lg font-semibold">
+                Joint Secretery, Graphic Designer
+              </h3>
+              <span class="text-xs text-gray-500">Nov 2017 - Nov 2018</span>
+              <p class="text-sm">Aust Innovation and Design Club</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+<section id="experience" class="bg-gray-50 text-gray-900 py-16 mt-32">
+  <div class="container mx-auto px-6">
+    <!-- Section Header -->
+    <h2 class="text-3xl font-bold mb-12 text-center">🎓 Experience</h2>
+
+    <!-- Timeline Wrapper -->
+    <div class="relative">
+      <!-- Vertical Line -->
+      <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-l-4 border-gray-300"></div>
+
+      <!-- Item 1 (Left) -->
+      <div class="mb-16 flex justify-start w-full">
+        <div class="w-1/2 pr-8 text-right">
+          <h3 class="text-lg font-semibold">Frontend Developer – Nodesol Corp</h3>
+          <p class="text-sm">Worked on modern frontend solutions with React & Next.js</p>
+          <p class="text-xs text-gray-500">1 Year</p>
+        </div>
+        <div class="w-1/2 relative">
+          <div class="absolute -left-3 top-2 w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"></div>
+        </div>
+      </div>
+
+      <!-- Item 2 (Right) -->
+      <div class="mb-16 flex justify-end w-full">
+        <div class="w-1/2 relative">
+          <div class="absolute -right-3 top-2 w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"></div>
+        </div>
+        <div class="w-1/2 pl-8 text-left">
+          <h3 class="text-lg font-semibold">Web Developer Intern – Nodesol Corp</h3>
+          <p class="text-sm">Assisted in developing and testing web applications</p>
+          <p class="text-xs text-gray-500">3 Months</p>
+        </div>
+      </div>
+
+      <!-- Item 3 (Left) -->
+      <div class="mb-16 flex justify-start w-full">
+        <div class="w-1/2 pr-8 text-right">
+          <h3 class="text-lg font-semibold">Certified Agentic AI Engineer – Panaversity</h3>
+          <p class="text-sm">Completed certification in Agentic AI Engineering</p>
+          <p class="text-xs text-gray-500">2024</p>
+        </div>
+        <div class="w-1/2 relative">
+          <div class="absolute -left-3 top-2 w-6 h-6 rounded-full bg-yellow-500 border-4 border-gray-50"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+  <!-- Research & Publications -->
+
+        <section class="space-y-4 my-20">
+          <h2 class="text-center text-3xl font-bold my-10">
+            Research & Publications
+          </h2>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-x-6 gap-y-10 md:max-w-7xl mx-auto"
+          >
+            <div
+              class="bg-white shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl rounded-lg p-4"
+            >
+              <a href="https://doi.org/10.1145/3697789.3697804" target="_blank">
+                <img
+                  src="assets/images/icgj24.png"
+                  alt="Rapid Game World Creation"
+                  class="w-full h-48 object-cover rounded-md"
+                />
+              </a>
+
+              <p class="mt-4 font-medium text-gray-800">
+                <a
+                  href="https://doi.org/10.1145/3697789.3697804"
+                  target="_blank"
+                  class="hover:text-green-600"
+                >
+                  Rapid Game World Creation Leveraging Geospatial Data in Game
+                  Jams: The ’Galactic Gourmet’ Post-Mortem
+                </a>
+              </p>
+
+              <p class="text-sm text-gray-600 mt-2">
+                ICGJ '24: Proceedings of the 8th International Conference on
+                Game Jams, Hackathons and Game Creation Events, Copenhagen,
+                Denmark, October 2024.<br />
+                DOI:
+                <a
+                  href="https://doi.org/10.1145/3697789.3697804"
+                  class="text-blue-600 hover:underline"
+                >
+                  doi.org/10.1145/3697789.3697804
+                </a>
+              </p>
+
+              <div class="mt-4 flex items-center gap-3 flex-wrap">
+                <a
+                  href="https://doi.org/10.1145/3697789.3697804"
+                  target="_blank"
+                  class="bg-green-600 hover:bg-green-700 text-white text-sm px-3 py-1.5 rounded-md shadow-sm"
+                >
+                  Paper
+                </a>
+
+                <span
+                  class="border border-black text-gray-700 text-xs px-2 py-1 rounded-md"
+                >
+                  Conference
+                </span>
+                <span
+                  class="border border-black text-gray-700 text-xs px-2 py-1 rounded-md"
+                >
+                  2024
+                </span>
+              </div>
+            </div>
+
+            <div
+              class="bg-gray-50 shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl rounded-lg p-4"
+            >
+              <a href="Balancing-Clash-Royale.html" target="_blank">
+                <img
+                  src="assets/images/clashbalance.png"
+                  alt="Clash Royale Project"
+                  class="h-[185px] w-[320px] rounded-md object-cover mx-auto"
+                />
+              </a>
+
+              <p class="mt-3 font-semibold text-gray-900">
+                <a
+                  href="Balancing-Clash-Royale.html"
+                  target="_blank"
+                  class="hover:underline"
+                >
+                  Balancing Clash Royale: Through Card vs Card Battle
+                  Simulations and Cost-Benefit Analysis
+                </a>
+              </p>
+
+              <p class="text-sm text-gray-700 mt-2 text-left">
+                A Game Analysis project aimed at analyzing the game balance of
+                popular Supercell game, Clash Royale.
+              </p>
+
+              <p class="text-sm text-gray-700 mt-2 text-left">
+                This python project features data scraping, cleaning and
+                processing, realistic card vs card battle simulation featuring
+                various parameters, card cost-benefit calculation through
+                analyzing their correlations etc.<br />
+                <span class="font-medium">Learnings:</span> game analysis,
+                balancing, design, data processing, python programming.
+              </p>
+
+              <div class="mt-4 flex items-center flex-wrap gap-2">
+                <a
+                  href="Balancing-Clash-Royale.html"
+                  target="_blank"
+                  class="bg-green-600 hover:bg-green-700 text-white text-sm font-medium px-4 py-1 rounded"
+                >
+                  Read
+                </a>
+
+                <span
+                  class="border border-black rounded px-2 py-1 text-xs text-gray-700"
+                >
+                  Game Analysis
+                </span>
+                <span
+                  class="border border-black rounded px-2 py-1 text-xs text-gray-700"
+                >
+                  2024
+                </span>
+              </div>
+            </div>
+
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl"
+            >
+              <a
+                href="https://drive.google.com/file/d/10vu7HyCQjx_-XTTwEz0GGQomZPynV6Gs/view?usp=sharing"
+                target="_blank"
+              >
+                <img
+                  src="assets/images/gd.jpg"
+                  alt="Gamecraft Workshop"
+                  class="w-full h-48 object-cover rounded-t-lg"
+                />
+              </a>
+
+              <div class="p-4">
+                <p
+                  class="text-lg font-semibold text-gray-800 hover:text-green-600 transition duration-200"
+                >
+                  <a
+                    href="https://drive.google.com/file/d/10vu7HyCQjx_-XTTwEz0GGQomZPynV6Gs/view?usp=sharing"
+                    target="_blank"
+                  >
+                    Gamecraft: A Workshop for Aspiring Developers by AUST IDC
+                  </a>
+                </p>
+
+                <p class="text-sm text-gray-600 mt-2">
+                  Instructed a 2 hour online workshop for 100+ students
+                  discussing the complete workflow of a game's design,
+                  development and release.
+                  <br /><br />
+                  Topics such as game industry and team diversities, tools,
+                  level designing, game programming, tips for beginners, game
+                  balancing and analysis, game research, testing and debugging,
+                  publishing, monetization, learning resources, higher education
+                  and career opportunities, etc were discussed.
+                </p>
+
+                <!-- Buttons -->
+                <div class="mt-4 flex items-center gap-2 flex-wrap">
+                  <a
+                    href="https://www.facebook.com/events/2414224025452134/?active_tab=discussion"
+                    target="_blank"
+                    class="bg-green-600 text-white text-sm px-4 py-1 rounded hover:bg-green-700 transition"
+                  >
+                    Event
+                  </a>
+
+                  <span
+                    class="border border-black rounded px-2 py-0.5 text-xs text-gray-700"
+                  >
+                    Workshop
+                  </span>
+                  <span
+                    class="border border-black rounded px-2 py-0.5 text-xs text-gray-700"
+                  >
+                    2024
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:shadow-xl transition-transform duration-300 hover:scale-105"
+            >
+              <!-- Image -->
+              <a
+                href="CampSajek.html"
+                target="_blank"
+                class="block overflow-hidden"
+              >
+                <img
+                  src="assets/images/campsajek.png"
+                  alt="Camp Sajek"
+                  class="w-[320px] h-[185px] object-cover rounded-md mx-auto"
+                />
+              </a>
+
+              <!-- Title -->
+              <p class="mt-3 text-lg font-semibold text-gray-800 text-center">
+                <a
+                  href="CampSajek.html"
+                  target="_blank"
+                  class="hover:text-green-600"
+                >
+                  Board Game Design: Camp Sajek
+                </a>
+              </p>
+
+              <!-- Description -->
+              <div class="px-4 py-2">
+                <p class="text-sm text-gray-600 text-left mb-2">
+                  Camp Sajek is a 2-4 player board game that takes players on a
+                  relaxing yet exhilarating expedition through the magical land
+                  of Sajek Valley in Bangladesh.
+                </p>
+                <p class="text-sm text-gray-600 text-left mb-2">
+                  However, even an enjoyable task such as camping can call for
+                  different difficulties and therefore, the goal of the players
+                  is to maximize their happiness levels and to make everyone’s
+                  experience as relaxing as possible throughout the whole
+                  journey by tackling those difficulties working as a team while
+                  getting to know about Bangladesh and its local culture and
+                  cuisine.
+                </p>
+              </div>
+
+              <!-- Buttons & Tags -->
+              <div class="px-4 pb-4 flex flex-wrap items-center gap-2">
+                <a
+                  href="CampSajek.html"
+                  target="_blank"
+                  class="bg-green-600 text-white text-sm px-4 py-1 rounded-md hover:bg-green-700 transition"
+                >
+                  Read
+                </a>
+                <span
+                  class="border border-black rounded-md px-2 py-0.5 text-xs text-gray-600"
+                >
+                  Aalto Admission Assignment
+                </span>
+                <span
+                  class="border border-black rounded-md px-2 py-0.5 text-xs text-gray-600"
+                >
+                  2023
+                </span>
+              </div>
+            </div>
+
+            <div
+              class="bg-white rounded-lg shadow-md p-4 transform transition duration-300 hover:scale-105 hover:shadow-xl"
+            >
+              <!-- Image -->
+              <a href="TidalQuest.html" target="_blank">
+                <img
+                  src="assets/images/tidal.png"
+                  alt="Tidal Quest"
+                  class="h-[185px] w-[320px] object-cover rounded-md mx-auto"
+                />
+              </a>
+
+              <!-- Title -->
+              <p class="mt-3 text-lg font-semibold text-black">
+                <a
+                  href="TidalQuest.html"
+                  target="_blank"
+                  class="hover:underline"
+                  >Game Design: Tidal Quest</a
+                >
+              </p>
+
+              <!-- Description -->
+              <p class="text-sm text-black text-left mt-2">
+                GDD for an isometric, action-exploration game where you dive
+                deep on a quest of saving sea creatures, only to unravel deeper
+                conspiracies.
+              </p>
+
+              <!-- Buttons -->
+              <div class="mt-3">
+                <a
+                  href="TidalQuest.html"
+                  target="_blank"
+                  class="bg-green-600 text-white px-4 py-1.5 rounded-md text-base font-medium hover:bg-green-700 transition"
+                >
+                  Read
+                </a>
+              </div>
+
+              <!-- Tags -->
+              <div class="mt-3 space-x-2">
+                <span
+                  class="border border-black text-black text-xs px-2 py-1 rounded-md inline-block"
+                  >Game Design</span
+                >
+                <span
+                  class="border border-black text-black text-xs px-2 py-1 rounded-md inline-block"
+                  >2024</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="bg-white rounded-lg shadow-md p-4 transform transition duration-300 hover:scale-105 hover:shadow-xl"
+            >
+              <!-- Image -->
+              <a href="UndergradThesis.html" target="_blank">
+                <img
+                  src="assets/images/thesis.png"
+                  alt="BSc Thesis"
+                  class="h-[185px] w-[320px] object-cover rounded-md mx-auto"
+                />
+              </a>
+
+              <!-- Title -->
+              <p class="mt-3 text-lg font-semibold text-black">
+                <a
+                  href="UndergradThesis.html"
+                  target="_blank"
+                  class="hover:underline"
+                >
+                  BSc Thesis: Automatic Human Brain Segmentation using ML
+                  Techniques
+                </a>
+              </p>
+
+              <!-- Description -->
+              <p class="text-sm text-black text-left mt-2">
+                Undergrad thesis where I classified brain tracts from whole
+                brain data using different supervised machine learning
+                algorithms such as KD Tree, NN &amp; SVM.
+              </p>
+
+              <!-- Button -->
+              <div class="mt-3">
+                <a
+                  href="UndergradThesis.html"
+                  target="_blank"
+                  class="bg-green-600 text-white px-4 py-1.5 rounded-md text-base font-medium hover:bg-green-700 transition"
+                >
+                  Read
+                </a>
+              </div>
+
+              <!-- Tags -->
+              <div class="mt-3 space-x-2">
+                <span
+                  class="border border-black text-black text-xs px-2 py-1 rounded-md inline-block"
+                  >Thesis</span
+                >
+                <span
+                  class="border border-black text-black text-xs px-2 py-1 rounded-md inline-block"
+                  >2019</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+        
+
+  <!-- FOOTER -->
+  <footer class="border-t border-gray-800 mt-12">
+    <div class="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="text-sm">© <span id="year"></span> Uswah Saeed — All rights reserved.</div>
+      <div class="flex gap-3">
+        <a href="https://www.linkedin.com/in/uswah-saeed/" target="_blank">LinkedIn</a>
+        <a href="https://uswahsaeed.itch.io/" target="_blank">Itch.io</a>
+        <a href="https://github.com/Uswah-Saeed" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Simple JS for interactions -->
+  <script>
+    // mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // filter buttons (demo: hide/show cards by data-filter attribute)
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        // for now all cards show (you can add data-cat attributes to project cards to filter)
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('bg-accent-blue','text-white'));
+        btn.classList.add('bg-accent-blue','text-white');
+      });
+    });
+
+    // set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // thumbnail clicks could open a simple modal (not implemented here - placeholder)
+    document.querySelectorAll('.thumb').forEach(t => {
+      t.addEventListener('click', (e) => {
+        const src = e.target.src;
+        // open in new tab for now
+        window.open(src, '_blank');
+      });
+    });
+  </script>
+</body>
+</html>
